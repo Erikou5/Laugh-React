@@ -1,0 +1,82 @@
+.containFichas{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    box-sizing: border-box;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+p{
+    text-align: center;
+}
+
+.fichas{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center ;
+    flex-direction: column;
+    height: 300px;
+    width: 220px;
+    margin: 30px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 15px 15px 17px 1px rgba(255, 255, 255, 0.32);
+    -webkit-box-shadow: 15px 15px 17px 1px rgba(255, 255, 255, 0.32);
+    -moz-box-shadow: 15px 15px 17px 1px rgba(255, 255, 255, 0.32);
+}
+
+.fichas h2{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-style: italic;
+        font-weight: bold;
+        color: black;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin:0px;
+        margin-top: 2px;
+}
+
+.fichas img{
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 5px;
+    object-fit: contain;
+}
+
+.fichas button{
+    text-decoration: none;
+    background-color: royalblue;
+    color: whitesmoke;
+    padding: 8px;
+    font-size: 15px ;
+    transition: 0.3s;
+    margin-left: 8px;
+    border: none;
+}
+
+.fichas button:hover{
+    border-radius: 10px;
+    background-color:rgb(65, 60, 225);
+}
+.fichas p{
+    margin: 0px;
+    color: red;
+    margin-right: 8px;
+}
+
+.precio{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,12 @@
+
+[
+    {"id": 1,"nombre": "Gato robot - Toy Story","precio": 35000,"stock": 5,"img": "../src/img/gato.jpg","alt": "gato robot nendoroid toy story","cantidad": 0},
+    {"id": 2,"nombre": "Luffy - One Piece","precio":  25000,"stock":  10,"img":  "../src/img/luffy.jpg","alt": "luffy figura one piece","cantidad": 0},
+    {"id": 3,"nombre": "Yoru Forger - Spy x Family","precio":  20000,"stock":  7,"img":  "../src/img/yoru.jpg","alt": "yoru spy x family","cantidad": 0},
+    {"id": 4,"nombre": "Animal Crossing - Nintendo Switch","precio":  18000,"stock":  3,"img":  "../src/img/animal.jpg","alt": "animal crossing nintendo switch","cantidad": 0},
+    {"id": 5,"nombre": "Mikami - La cazafantasmas","precio":  55000,"stock":  2,"img":  "../src/img/mikami.jpg","alt": "mikami figura","cantidad": 0},
+    {"id": 6,"nombre": "Kenshin - Samurai X","precio":  35000,"stock":  4,"img":  "../src/img/kenshin.jpg","alt": "kenshin himura nendoroid","cantidad": 0},
+    {"id": 7,"nombre": "Kagami y Tsukasa - Lucky star","precio":  70000,"stock":  1,"img":  "../src/img/lucky.jpg","alt": "Lucky star figura Kagami y Tsukasa","cantidad": 0},
+    {"id": 8,"nombre": "Zelda Minish Cap - GBA","precio":  25000,"stock":  2,"img":  "../src/img/minishcap.jpg","alt": "zelda minish cap gba","cantidad": 0},
+    {"id": 9,"nombre": "Maga oscura - Yu-Gi-Oh","precio":  50000,"stock":  3,"img":  "../src/img/magaoscura.jpg","alt": "maga oscura figma yugioh","cantidad": 0}    
+]
