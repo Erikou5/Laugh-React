@@ -6,3 +6,7 @@
     box-sizing: border-box;
     font-family: 'TheGoodMonolith', sans-serif;
 }
+
+p{
+    text-align: center;
+}
