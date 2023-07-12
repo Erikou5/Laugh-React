@@ -15,7 +15,7 @@ export const ItemDetailContainer = () => {
     useEffect(()=>{
         setLoading(true)
         
-        pedirDatos()
+        pedirDatos()        // a mi lista la filtro por el elemento que coincida el id de la ruta y lleno el item con los param de ese objeto
         .then((res) => {
             setItem(res.find((el) => el.id === Number(itemId))) // lo paso a number porq viene como string
         })

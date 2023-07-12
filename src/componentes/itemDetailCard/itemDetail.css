@@ -21,9 +21,10 @@ h2 {
     justify-content: space-between ;
     align-items: center ;
     flex-direction: column;
-    height: 650px;
+    height: 625px;
     width: 500px;
     margin: 30px 20px;
+    padding-bottom: 10px;
     border: 2px solid rgba(0, 0, 0, 0.6);
     border-radius: 15px;
     box-shadow: 15px 15px 17px 1px rgba(255, 255, 255, 0.32);
@@ -44,7 +45,7 @@ h2 {
 }
 
 .fichaDetalle img{
-    height: 600px;
+    height: 500px;
     width: 400px;
     padding: 5px;
     padding-top: 15px;
