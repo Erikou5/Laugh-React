@@ -1,6 +1,11 @@
 import './carrito.css'
+import { CarritoProducts } from '../carritoProducts/carritoProducts'
+import { useContext } from 'react'
+import { CarritoContext } from '../../context/carritoContext'
 
 export const Carrito = () => {
+
+    const {totalCarrito, vaciarCarrito, carrito} = useContext(CarritoContext)
 
     return (
         <div className="carrito">
@@ -19,9 +24,17 @@ export const Carrito = () => {
                                 aria-label="Close"></button>
                         </div>
                         <div className="modal-body d-flex flex-wrap text-center carritoModal">
+                            {
+                                carrito.length === 0?
+                                <p>Su carrito esta vacio</p>
+                                : <CarritoProducts />
+                            }
+                            <hr />
+                            <h5>Total : { totalCarrito() }</h5>
+
                         </div>
                         <div className="modal-footer d-flex justify-content-around" id="modalFooter">
-                            <button type="button" className="btn btn-secondary" >Vaciar carrito</button>
+                            <button onClick={vaciarCarrito} type="button" className="btn btn-secondary" >Vaciar carrito</button>
                             <button type="button" className="btn btn-primary" >Finalizar compra</button>
                         </div>
                     </div>

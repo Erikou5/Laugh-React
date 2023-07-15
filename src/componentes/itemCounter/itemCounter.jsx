@@ -1,6 +1,6 @@
 import './itemCounter.css'
 
-const ItemCounter = ({max,setCantidad,cantidad}) => {
+const ItemCounter = ({max,setCantidad,cantidad, handleAgregar}) => {
     
     const handleRestar = ()=> {
         cantidad > 1 && setCantidad (cantidad -1)
@@ -11,6 +11,7 @@ const ItemCounter = ({max,setCantidad,cantidad}) => {
     }
 
     return (
+        
         <div>
         <button onClick={handleRestar} className="btn btn-secondary"> - </button>
 
@@ -18,7 +19,7 @@ const ItemCounter = ({max,setCantidad,cantidad}) => {
         
         <button onClick={handleSumar} className="btn btn-secondary"> + </button>
 
-        <button className="btn btn-primary agregar">Agregar</button>
+        <button onClick={handleAgregar} className="btn btn-primary agregar">Agregar</button>
 
         </div>
     )
