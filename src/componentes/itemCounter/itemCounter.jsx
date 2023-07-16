@@ -13,13 +13,13 @@ const ItemCounter = ({max,setCantidad,cantidad, handleAgregar}) => {
     return (
         
         <div>
-        <button onClick={handleRestar} className="btn btn-secondary"> - </button>
+        <button onClick={handleRestar} className="btn btn-secondary" disabled={cantidad === 1}> - </button>
 
         <span>{cantidad}</span>
         
-        <button onClick={handleSumar} className="btn btn-secondary"> + </button>
+        <button onClick={handleSumar} className="btn btn-secondary" disabled = {cantidad === max}> + </button>
 
-        <button onClick={handleAgregar} className="btn btn-primary agregar">Agregar</button>
+        <button onClick={handleAgregar} className="btn btn-primary agregar" >Agregar</button>
 
         </div>
     )

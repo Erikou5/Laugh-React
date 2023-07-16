@@ -1,0 +1,26 @@
+.carritoForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carritoForm label {
+    margin-bottom: 5px;
+}
+
+.carritoForm input {
+    margin-bottom: 2px;
+}
+
+
+.formLabel{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.formInput{
+    display: flex;
+    flex-direction: column;
+}

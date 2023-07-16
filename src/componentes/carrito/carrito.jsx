@@ -1,19 +1,29 @@
 import './carrito.css'
 import { CarritoProducts } from '../carritoProducts/carritoProducts'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CarritoContext } from '../../context/carritoContext'
+import { CarritoWidget } from '../carritoWidget/carritoWidget'
+import { CarritoForm } from '../carritoFinalizar/carritoForm'
 
 export const Carrito = () => {
 
     const {totalCarrito, vaciarCarrito, carrito} = useContext(CarritoContext)
 
+    const [finalizar , setFinalizar] = useState(false) //estado para variar entre el form del carrito y el contenido normal
+
+    const pagar = ()=> {
+        Swal.fire({
+            title: '¡Compra realizada con exito!',                     
+            icon: 'success',
+        })
+        vaciarCarrito()
+        setFinalizar(false)
+    }
+
     return (
         <div className="carrito">
-            <button type="button" className="btn btn-primary botonCarrito" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                <i className="fa-solid fa-cart-shopping ml-5" wheight="10px"></i>
-            </button>
-            {/* //<!-- Modal --> */}
+            <CarritoWidget/>
+            {/*  Modal  */}
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div className="modal-dialog">
@@ -25,17 +35,32 @@ export const Carrito = () => {
                         </div>
                         <div className="modal-body d-flex flex-wrap text-center carritoModal">
                             {
-                                carrito.length === 0?
+                                carrito.length === 0?             //condicionales para renderizar el contenido del carrito
                                 <p>Su carrito esta vacio</p>
-                                : <CarritoProducts />
+                                : finalizar?
+                                <CarritoForm/>:
+                                <>
+                                <CarritoProducts />
+                                <hr />
+                                <h5>Total : { totalCarrito() }</h5>
+                                </>
                             }
-                            <hr />
-                            <h5>Total : { totalCarrito() }</h5>
-
                         </div>
-                        <div className="modal-footer d-flex justify-content-around" id="modalFooter">
-                            <button onClick={vaciarCarrito} type="button" className="btn btn-secondary" >Vaciar carrito</button>
-                            <button type="button" className="btn btn-primary" >Finalizar compra</button>
+                        <div className="d-flex justify-content-around">
+                            {
+                                finalizar?    //condicional para los botones
+                                <>
+                                <button onClick={() => setFinalizar(false)} type="button" className="btn btn-secondary" >Volver</button>
+                                <button onClick={pagar} type="button" className="btn btn-primary" >Pagar</button>
+                                </>
+                                :
+                                <>
+                                <button onClick={vaciarCarrito} type="button" className="btn btn-secondary" 
+                                disabled = {carrito.length === 0}>Vaciar carrito</button>       {/*deshabilito los botones si el carro esta vacio*/}
+                                <button onClick={() => setFinalizar(true)} type="button" className="btn btn-primary" 
+                                disabled = {carrito.length === 0}>Finalizar compra</button>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>

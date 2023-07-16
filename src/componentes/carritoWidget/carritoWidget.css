@@ -1,0 +1,14 @@
+.botonCarrito {
+    border: rgba(0, 0, 0, 0.7) 1px solid;
+    padding: 5px;
+    padding-top: 8px;
+}
+
+button div {
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+i{
+    margin-left: 3px;
+}
