@@ -21,10 +21,10 @@ export const ItemDetail = ({id,nombre,img,alt,stock,precio}) =>{
             cantidad
         }
 
-        if (isInCart (id)){
-            const productoEnCarrito = buscarElemento(id)
+        if (isInCart (id)){                                      //esta en el carrito ?
+            const productoEnCarrito = buscarElemento(id)            //creo ref a ese objeto
             
-            if (cantidad + productoEnCarrito.cantidad <= stock){
+            if (cantidad + productoEnCarrito.cantidad <= stock){       //verifico que no pase la cantidad al stock si se agrega
                 actualizarCantidad(id,cantidad)
                 productoAñadido()
             }else {
@@ -46,7 +46,7 @@ export const ItemDetail = ({id,nombre,img,alt,stock,precio}) =>{
             <img src={img} alt={alt} />
             <h2>Precio: {precio} $</h2>
             <p>Stock: {stock}</p>
-            <small>ID: {id}</small>
+            <small>{alt}</small>
 
             <ItemCounter
             max={stock}

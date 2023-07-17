@@ -62,3 +62,7 @@ h2 {
 .fichaDetalle small{
     margin-bottom: 8px;
 }
+
+small{
+    color:grey;
+}

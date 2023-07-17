@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { pedirDatos } from '../../helpers/pedirDatos'
 import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../itemDetailCard/itemDetail'
+import {doc, getDoc} from 'firebase/firestore'
+import { database } from '../../firebase/config'
 
 
 export const ItemDetailContainer = () => {
@@ -13,15 +14,16 @@ export const ItemDetailContainer = () => {
     const {itemId} = useParams() 
 
     useEffect(()=>{
-        setLoading(true)
-        
-        pedirDatos()        // a mi lista la filtro por el elemento que coincida el id de la ruta y lleno el item con los param de ese objeto
+        const itemRef = doc(database,"productos", itemId)  //referencio al elemento con el mismo id de itemId de la database
+
+        getDoc(itemRef)     //lo llamo y con .data() formo el objeto original agregando el nuevo id
         .then((res) => {
-            setItem(res.find((el) => el.id === Number(itemId))) // lo paso a number porq viene como string
+            setItem({...res.data(), id: res.id})
         })
         .catch((error)=> console.log(error))
         .finally(()=> setLoading(false))
-    }, [itemId] )
+    },[itemId])
+
 
     return (
         <div>

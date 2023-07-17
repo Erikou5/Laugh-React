@@ -1,9 +1,10 @@
 import './productContainer.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { pedirDatos } from '../../helpers/pedirDatos'
 import { productList } from '../productList/productList'
 import { useParams } from 'react-router-dom'
+import {collection, getDocs,query,where} from "firebase/firestore"
+import { database } from '../../firebase/config'
 
 
 export const ProductContainer = () => {
@@ -12,17 +13,25 @@ export const ProductContainer = () => {
 
     const {categoriaId} = useParams() // capturo el valor de la categoria
 
+    const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{                        // se usa useEffect para que solo se cargue una vez la lista con dependencia vacia
-        pedirDatos()
-        .then((res) => {
-            if (!categoriaId){            //sino hay categoria
-                setProductosDom(res)       //lleno mi array de productos con la respuesta de la promesa
-            }else {
-                setProductosDom(res.filter((el) => el.categoria === categoriaId )) // lo llena con los que coincida la categoria
-            }
+
+    useEffect(()=>{
+
+        const productosRef = collection(database, "productos") // creo una referencia de mi coleccion de productos
+
+        const filtroQuery = categoriaId ?                                //hay categoria?
+        query(productosRef, where("categoria", "==", categoriaId))      // entonces se define con el filtro de query
+        :productosRef                                                   //sino con la lista tal cual llega
+
+        getDocs(filtroQuery) // hago peticion a la referencia asincronica
+        .then((res) =>{
+            const productos = res.docs.map((el) => ({...el.data(), id: el.id})) //creo un array extrayendo los datos de docs con .data() mapeando y agrego el id nuevo
+            setProductosDom(productos) // seteo mi nuevo array de productos
         })
-    }, [categoriaId] )
+        .catch((error)=> console.log(error))
+        .finally(()=> setLoading(false))
+    }, [categoriaId])
 
     return (
         <>
@@ -30,7 +39,7 @@ export const ProductContainer = () => {
             <hr />
             <div className="containFichas">
                 {
-                productosDom.length === 0?
+                loading?
                 "Cargando..." 
                 : productList(productosDom)
                 }

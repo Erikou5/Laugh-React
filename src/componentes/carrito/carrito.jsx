@@ -30,8 +30,12 @@ export const Carrito = () => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Tu carrito</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button 
+                            onClick={() => 
+                            setTimeout( () => {        // le puse tiempo nada mas para que no se vea el nuevo render mientras se cierra
+                            setFinalizar(false)
+                            }, 500)}
+                            type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body d-flex flex-wrap text-center carritoModal">
                             {

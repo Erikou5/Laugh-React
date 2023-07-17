@@ -18,12 +18,10 @@ export const productList = (items) => {    //funcion que recive por parametro un
             cantidad : 1
         }
 
-        if (isInCart (el.id)){
-            const productoEnCarrito = buscarElemento(el.id)
-            console.log("paso el if")
-
-
-            if ( item.cantidad + productoEnCarrito.cantidad <= item.stock){
+        if (isInCart (el.id)){                                    //verifico si ya esta en el carrito
+            const productoEnCarrito = buscarElemento(el.id)          //referencio a ese elemento
+            
+            if ( item.cantidad + productoEnCarrito.cantidad <= item.stock){    //veo q no se pase la suma la cantidad al stock
                 actualizarCantidad(el.id, item.cantidad)
                 productoAñadido()
             }else {
