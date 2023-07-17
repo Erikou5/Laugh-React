@@ -5,7 +5,7 @@ import { productList } from '../productList/productList'
 import { useParams } from 'react-router-dom'
 import {collection, getDocs,query,where} from "firebase/firestore"
 import { database } from '../../firebase/config'
-
+import ClipLoader from "react-spinners/ClipLoader"
 
 export const ProductContainer = () => {
 
@@ -40,7 +40,9 @@ export const ProductContainer = () => {
             <div className="containFichas">
                 {
                 loading?
-                "Cargando..." 
+                <ClipLoader
+                color = "white"
+                />
                 : productList(productosDom)
                 }
             </div>

@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../itemDetailCard/itemDetail'
 import {doc, getDoc} from 'firebase/firestore'
 import { database } from '../../firebase/config'
-
+import ClipLoader from "react-spinners/ClipLoader"
+import "./ItemDetailContainer.css"
 
 export const ItemDetailContainer = () => {
 
@@ -29,7 +30,11 @@ export const ItemDetailContainer = () => {
         <div>
             {
                 loading ?
-                <p>Cargando...</p>                 
+                <div className='loading'>
+                    <ClipLoader
+                    color = "white"
+                    />               
+                </div>
                 : <ItemDetail {...item}/>
             }
         </div>
