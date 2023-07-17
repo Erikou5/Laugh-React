@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { CarritoContext } from '../../context/carritoContext'
-
+import "./CarritoProducts.css"
 
 
 export const CarritoProducts = () => {
 
-    const { carrito } = useContext(CarritoContext);
+    const { carrito, eliminarProducto } = useContext(CarritoContext);
     
     return (
         <div>
@@ -20,7 +20,10 @@ export const CarritoProducts = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{el.nombre}</h5>
                                     <p className="card-text">Precio: {el.precio} $</p>
+                                    <div className="d-flex cantDelete">
                                     <p className="card-text"><small className="text-muted">Cantidad: {el.cantidad}</small></p>
+                                    <button onClick={()=>eliminarProducto(el.id)}><i class="fa-solid fa-trash" wheight="10px"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

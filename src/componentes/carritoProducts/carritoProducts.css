@@ -1,0 +1,11 @@
+.cantDelete {
+    align-items: center;
+    justify-content: center;
+}
+
+.cantDelete button{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+}
