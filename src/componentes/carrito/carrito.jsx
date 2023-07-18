@@ -1,24 +1,13 @@
 import './carrito.css'
 import { CarritoProducts } from '../carritoProducts/carritoProducts'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { CarritoContext } from '../../context/carritoContext'
 import { CarritoWidget } from '../carritoWidget/carritoWidget'
-import { CarritoForm } from '../carritoFinalizar/carritoForm'
+import { CarritoForm } from '../carritoForm/carritoForm'
 
 export const Carrito = () => {
 
-    const {totalCarrito, vaciarCarrito, carrito} = useContext(CarritoContext)
-
-    const [finalizar , setFinalizar] = useState(false) //estado para variar entre el form del carrito y el contenido normal
-
-    const pagar = ()=> {
-        Swal.fire({
-            title: '¡Compra realizada con exito!',                     
-            icon: 'success',
-        })
-        vaciarCarrito()
-        setFinalizar(false)
-    }
+    const {totalCarrito, vaciarCarrito, carrito,finalizar, setFinalizar,pagar} = useContext(CarritoContext)
 
     return (
         <div className="carrito">
@@ -33,7 +22,9 @@ export const Carrito = () => {
                             <button 
                             onClick={() => 
                             setTimeout( () => {        // le puse tiempo nada mas para que no se vea el nuevo render mientras se cierra
-                            setFinalizar(false)
+                            if (finalizar){
+                                setFinalizar(false)
+                            }
                             }, 500)}
                             type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -42,7 +33,8 @@ export const Carrito = () => {
                                 carrito.length === 0?             //condicionales para renderizar el contenido del carrito
                                 <p>Su carrito esta vacio</p>
                                 : finalizar?
-                                <CarritoForm/>:
+                                <CarritoForm/>
+                                :
                                 <>
                                 <CarritoProducts />
                                 <hr />
@@ -54,8 +46,8 @@ export const Carrito = () => {
                             {
                                 finalizar?    //condicional para los botones
                                 <>
-                                <button onClick={() => setFinalizar(false)} type="button" className="btn btn-secondary" >Volver</button>
-                                <button onClick={pagar} type="button" className="btn btn-primary" >Pagar</button>
+                                {/* <button onClick={() => setFinalizar(false)} type="button" className="btn btn-secondary" >Volver</button>
+                                <button onClick={pagar} type="submit" className="btn btn-primary" >Pagar</button> */}
                                 </>
                                 :
                                 <>

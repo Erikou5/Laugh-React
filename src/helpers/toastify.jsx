@@ -27,3 +27,17 @@ export const sinStock = () =>{
         }
         }).showToast();
 }
+
+export const faltanDatos = () => {
+    Toastify({
+        text: "Por favor llena todos los campos!",
+        duration: 1500,
+        close: false,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: false,
+        style: {
+            background: "red",
+        }
+    }).showToast();
+}

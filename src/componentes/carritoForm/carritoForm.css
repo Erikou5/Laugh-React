@@ -1,8 +1,12 @@
 .carritoForm {
+    margin-top: 20px;
+    color: grey;
+}
+
+.carritoForm div{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    margin-top: 10px;
 }
 
 .carritoForm label {
@@ -10,7 +14,8 @@
 }
 
 .carritoForm input {
-    margin-bottom: 2px;
+    margin-bottom: 10px;
+    width: 250px;
 }
 
 
@@ -23,4 +28,8 @@
 .formInput{
     display: flex;
     flex-direction: column;
+}
+
+.botonForm{
+    margin-top: 15px;
 }

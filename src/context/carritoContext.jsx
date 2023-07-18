@@ -6,6 +6,7 @@ export const CarritoContext = createContext() // creo el contexto
 export const CarritoProvider = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])  // defino mi estado inicial de carrito como array vacio
+    const [finalizar , setFinalizar] = useState(false)  // estado para render del carrito
 
     const agregarAlCarrito = (item) => {     //el item se define en el componente
         setCarrito([...carrito, item])
@@ -46,6 +47,16 @@ export const CarritoProvider = ({ children }) => {
         setCarrito(nuevoCarrito);
     }
 
+    const pagar = (resId)=> {
+        Swal.fire({
+            title: '¡Compra realizada con exito!',
+            text: `Su numero de orden es : ${resId}`,             
+            icon: 'success',
+        })
+        vaciarCarrito()
+        setFinalizar(false)
+    }
+
     return (
         <CarritoContext.Provider value={{
             carrito,
@@ -56,7 +67,10 @@ export const CarritoProvider = ({ children }) => {
             vaciarCarrito,
             buscarElemento,
             actualizarCantidad,
-            totalCantidadCarrito
+            totalCantidadCarrito,
+            finalizar,
+            setFinalizar,
+            pagar
         }}>
             {children}
         </CarritoContext.Provider>
